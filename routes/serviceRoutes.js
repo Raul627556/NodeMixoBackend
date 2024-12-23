@@ -8,7 +8,7 @@ router.get('/getAllMachineServicesSum/:id', async (req, res) => {
     let { id } = req.params;
 
     try {
-        let totalServices = await Service.countDocuments({ machine: id });  // Contar los servicios relacionados con la máquina
+        let totalServices = await Service.countDocuments({ machine: id });
         res.json({ totalServices });
     } catch (error) {
         res.status(500).json({ error: 'Error al obtener el número de servicios', details: error.message });
@@ -28,7 +28,7 @@ router.post('/createService', async (req, res) => {
     let { type, date, service, price, cardId, machineId } = req.body;
 
     try {
-        let machine = await Machine.findOne({ _id: new mongoose.Types.ObjectId(machineId) });  // Usamos ObjectId con 'new'
+        let machine = await Machine.findOne({ _id: new mongoose.Types.ObjectId(machineId) })
         if (!machine) {
             return res.status(404).json({ error: 'Máquina no encontrada' });
         }

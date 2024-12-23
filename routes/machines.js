@@ -14,7 +14,7 @@ router.get('/getAllMachines', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     try {
-        let machine = await Machine.findOne({ id: req.params.id });  // Buscar por id de la máquina
+        let machine = await Machine.findOne({ id: req.params.id });
         if (!machine) {
             return res.status(404).json({ error: 'Máquina no encontrada' });
         }
@@ -24,7 +24,6 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// Ruta para crear una nueva máquina
 router.post('/create', async (req, res) => {
     let { name, localization, status, category, version } = req.body;
 

@@ -1,9 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');  // Importar el paquete CORS
+const cors = require('cors');
 const authRoutes = require('./routes/authRoutes');
-const machinesRoutes = require('./routes/machines'); // Importa las rutas de máquinas
-const serviceRoutes = require('./routes/serviceRoutes'); // Asegúrate de importar las rutas del servicio
+const machinesRoutes = require('./routes/machines');
+const serviceRoutes = require('./routes/serviceRoutes');
 
 require('dotenv').config();
 
@@ -31,10 +31,6 @@ mongoose.connect(process.env.MONGO_URI, {
     .then(() => console.log('Conectado a MongoDB'))
     .catch(err => console.log('Error al conectar a MongoDB:', err));
 
-// Rutas de ejemplo
-app.get('/', (req, res) => {
-  res.send('Hola, mundo!');
-});
 
 // Iniciar el servidor
 app.listen(port, () => {
