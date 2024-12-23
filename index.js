@@ -2,7 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');  // Importar el paquete CORS
 const authRoutes = require('./routes/authRoutes');
-const userRoutes = require('./routes/userRoutes');
+const machinesRoutes = require('./routes/machines'); // Importa las rutas de máquinas
+const serviceRoutes = require('./routes/serviceRoutes'); // Asegúrate de importar las rutas del servicio
+
 require('dotenv').config();
 
 const app = express();
@@ -15,7 +17,8 @@ app.use(cors());  // Permite todos los orígenes
 app.use(express.json());
 
 // Usar las rutas
-app.use('/api/users', userRoutes);
+app.use('/api/machines', machinesRoutes);
+app.use('/api/services', serviceRoutes);
 
 // Rutas de autenticación
 app.use('/api/auth', authRoutes);
